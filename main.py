@@ -55,7 +55,7 @@ while True:
                 delta = 0
 
             if delta > 0:
-                logging.info("%s: %s %d \t%s", courseid, num, delta, title)
+                logging.info("%s: %d\t%d\t%s", courseid, num, delta, title)
 
 
         except AttributeError as err:
