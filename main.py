@@ -15,19 +15,25 @@ urls = ["https://study.163.com/course/introduction/1208894818.htm",
         'https://study.163.com/course/introduction/1006498024.htm',
         'https://study.163.com/course/introduction/1003590004.htm',
         'https://study.163.com/course/introduction/1003599014.htm',
+        'https://study.163.com/course/introduction/1208943817.htm',
+        'https://study.163.com/course/introduction/1005781015.htm',
+        'https://study.163.com/course/introduction/1005695008.htm',
+        'https://study.163.com/course/introduction/1003606092.htm',
+        'https://study.163.com/course/introduction/1005214052.htm'
         ]
 
 options = webdriver.ChromeOptions()
 options.add_argument("headless")
-driver = webdriver.Chrome(options=options)
-driver.implicitly_wait(5)
+
 
 data = dict()
 
 
 while True:
 
-
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(5)
+    
     for url in urls:
 
         try:
@@ -58,10 +64,15 @@ while True:
                 logging.info("%s: %d\t%d\t%s", courseid, num, delta, title)
 
 
-        except AttributeError as err:
+
+        except (AttributeError,ValueError) as err:
             print(err, 'url:', url)
 
 
 
 
-    time.sleep(60*1)
+
+    # free up memory
+    driver.close()
+    driver.quit()
+    time.sleep(60*10)
