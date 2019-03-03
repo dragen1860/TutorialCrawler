@@ -22,9 +22,11 @@ options.add_argument("headless")
 driver = webdriver.Chrome(options=options)
 driver.implicitly_wait(5)
 
+data = dict()
+
+
 while True:
 
-    data = dict()
 
     for url in urls:
 
@@ -44,11 +46,12 @@ while True:
 
 
             try:
-                delta = data[courseid] - num
+                delta = num - data[courseid]
                 data[courseid] = num
             except KeyError as err:
-                # print(err, 'key')
+                print(err, 'KeyError')
                 data[courseid] = 0
+                # print(data.keys())
                 delta = 0
 
             if delta > 0:
