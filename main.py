@@ -19,7 +19,8 @@ urls = ["https://study.163.com/course/introduction/1208894818.htm",
         'https://study.163.com/course/introduction/1005781015.htm',
         'https://study.163.com/course/introduction/1005695008.htm',
         'https://study.163.com/course/introduction/1003606092.htm',
-        'https://study.163.com/course/introduction/1005214052.htm'
+        'https://study.163.com/course/introduction/1005214052.htm',
+        'https://study.163.com/course/introduction/1209092816.htm',
         ]
 
 options = webdriver.ChromeOptions()
@@ -55,7 +56,8 @@ while True:
                 delta = num - data[courseid]
                 data[courseid] = num
             except KeyError as err:
-                print(err, 'KeyError')
+                logging.info("%s: %d\t%d\t%s", courseid, num, 0, title)
+
                 data[courseid] = 0
                 # print(data.keys())
                 delta = 0
